@@ -1,0 +1,21 @@
+#include<stdio.h>
+
+int user_input()
+{
+    int num;
+    printf("Enter number : "); scanf("%d", &num);
+    return num;
+}
+
+int factorial(int n)
+{
+    int var_factorial = 1;
+    for ( int i = 1 ; i <= n ; i++ ) var_factorial *= i;
+    return var_factorial;
+}
+
+void main()
+{
+    int blyat = user_input();
+    printf("%d",factorial(blyat));
+}
