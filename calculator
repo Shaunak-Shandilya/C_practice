@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <math.h>
+
+float calculator(float a, float b) {
+    printf("Hello, please enter an operation (+, -, *, /, ^): ");
+    char operator;
+    scanf(" %c", &operator);  // Space before %c to consume leftover newline
+
+    switch (operator) {
+        case '+': return a + b;
+        case '-': return a - b; 
+        case '*': return a * b;
+        case '/': 
+            if (b != 0) return a / b;
+            else {
+                printf("Error: Division by zero.\n");
+                return -1;  // Indicate error for division by zero
+            }
+        case '^': return pow(a, b);
+        default:
+            printf("Invalid operator.\n");
+            return -1;  // Indicate error for invalid operator
+    }
+}
+
+static float num_1, num_2;
+
+void num_user_input() {
+    printf("Enter value of A: ");
+    scanf("%f", &num_1);
+    printf("Enter value of B: ");
+    scanf("%f", &num_2);
+}
+
+int main() {
+    num_user_input();  // Get user input for A and B
+    float result = calculator(num_1, num_2);  // Perform calculation
+
+    if (result != -1) {
+        printf("Result: %.2f\n", result);
+    }
+    
+    return 0;
+}
