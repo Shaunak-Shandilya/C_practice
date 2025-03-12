@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+void display(char* c) //ensure last character is null terminator or error is thrown
+{
+    try
+    {
+        cout << '{';
+        if (*c != '\0') 
+        {
+            cout << *c++;
+            while (*c != '\0') 
+            {
+                cout << ',' << *c++;
+            }
+        }
+        cout << '}';
+    }
+    catch (std::out_of_range) {cout << "out_of_range exception";}
+    catch (...) {cout << "exception caught";}
+}
+
+int main()
+{
+    char arr[10] = {'a','b','c','d','e','f','g','h','i','j'};
+    int arrlen = sizeof(arr)/sizeof(arr[0]);
+    arr[sizeof(arr)/sizeof(arr[0])-1] = '\0';
+    cout << "arrlen = " << arrlen << endl;
+    display(arr);
+    for (int i = 0 ; i < (arrlen/2) ; i++)
+    {
+        int temp = arr[i];
+        arr[i] = arr[arrlen-i-2];
+        arr[arrlen-i-2] = temp;  
+        cout << endl << "SWAP "<<i<<endl;
+    }
+    display(arr);
+}
