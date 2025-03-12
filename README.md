@@ -1,1 +1,1 @@
-c++ tutorial
+funny c++ how to
